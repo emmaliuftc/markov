@@ -30,7 +30,8 @@ def get_transition_matrix(traj, tau, n_states):
         count_matrix[initial_state, final_state] += 1 
 
     row_sums = count_matrix.sum(axis=1, keepdims=True)
-    # Use np.maximum to avoid dividing by zero if a state is briefly empty
+    # Normalize matrix
+    # Use np.maximum to avoid dividing by zero if a state is empty
     transition_matrix = count_matrix / np.maximum(row_sums, 1e-10) 
     return transition_matrix
 
