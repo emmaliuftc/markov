@@ -286,7 +286,7 @@ print("Generating Timeline Plots...")
 n_plot_steps = 200
 time_axis = range(n_plot_steps)
 
-fig, axes = plt.subplots(2, 1, figsize=(12, 6), sharex=True)
+fig, axes = plt.subplots(3, 1, figsize=(12, 6), sharex=True)
 
 # ---------------------------------------------------------
 # Plot A: The Hidden State Timeline (The "Master Clock")
@@ -303,11 +303,19 @@ axes[0].grid(True, alpha=0.3)
 # ---------------------------------------------------------
 axes[1].plot(time_axis, X_synthetic[:n_plot_steps, 0], label="Shape Feature", color='blue', alpha=0.8, linewidth=1.5)
 axes[1].plot(time_axis, X_synthetic[:n_plot_steps, 1], label="RNA Feature", color='red', alpha=0.8, linewidth=1.5)
-axes[1].set_title("Observable Data (Emissions)")
+axes[1].set_title("Synthetic Observable Data (Emissions)")
 axes[1].set_xlabel("Time Step")
 axes[1].set_ylabel("Continuous Value")
 axes[1].legend(loc="upper right")
 axes[1].grid(True, alpha=0.3)
+
+axes[2].plot(time_axis, X_observed[:n_plot_steps, 0], label="Shape", color='blue', alpha=0.8, linewidth=1.5)
+axes[2].plot(time_axis, X_observed[:n_plot_steps, 1], label="RNA", color='red', alpha=0.8, linewidth=1.5)
+axes[2].set_title("Real Data")
+axes[2].set_xlabel("Time Step")
+axes[2].set_ylabel("Continuous Value")
+axes[2].legend(loc="upper right")
+
 
 plt.tight_layout()
 plt.savefig(f"full_plot_{true_rho}.png",dpi=300,bbox_inches="tight")
