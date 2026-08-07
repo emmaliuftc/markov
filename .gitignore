@@ -2,10 +2,6 @@
 .pixi/*
 !.pixi/config.toml
 
-# Image ignores
-
-*.png
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
